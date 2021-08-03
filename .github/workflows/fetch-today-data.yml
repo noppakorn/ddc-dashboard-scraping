@@ -1,9 +1,9 @@
-name: fetch-dashboard-link
+name: fetch-today-data
 on:
   workflow_dispatch:
 jobs:
-  fetch-dashboard-link:
-    name: Fetch Dashboard Link
+  fetch-today-data:
+    name: Fetch Today Data
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current version
@@ -22,10 +22,16 @@ jobs:
       - name: Fetch Dashboard Link
         working-directory: ./src
         run: |
-          python get_dashboard_link.py
+          python scrape_tablueau_data.py
+      - name: Build National Timeseries
+        working-directory: ./src
+        run: |
+          python build_national_timeseries.py
       - name: Upload json to wiki
         uses: kai-tub/external-repo-sync-action@v1
         with:
-          source-directory: "./json"
+          source-directory: |
+            "*/dataset/national-timeseries"
+            "*/tableau_dump"
         env:
           GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}

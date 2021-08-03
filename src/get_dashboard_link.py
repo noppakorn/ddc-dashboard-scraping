@@ -41,7 +41,7 @@ if __name__ == '__main__':
         share_link_dict[date_to_scrape] = share_link
         print(date_to_scrape, ":", share_link)
     wd.close()
-    out_path = "../json"
+    out_path = "../dashboard_links"
     os.makedirs(out_path, exist_ok=True)
-    with open(os.path.join(out_path, f"covid-dashboard-link-{start}-{end}.json"), "w+", encoding="utf-8") as fout:
+    with open(os.path.join(out_path, f"covid-dashboard-link-{start}-{end}.dashboard_links"), "w+", encoding="utf-8") as fout:
         json.dump(share_link_dict, fout, ensure_ascii=False, indent=2)
