@@ -27,7 +27,6 @@ if __name__ == '__main__':
         "D_ATKACM": "cumulative_atk_cases",
     }
     date = str(datetime.datetime.now().date())
-    date = "2021-08-03"
     prev_data = "https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping/dataset/national-timeseries.json"
     req = requests.get(prev_data)
     json_data = req.json()

@@ -1,5 +1,7 @@
 name: fetch-today-data
 on:
+  schedule:
+    - cron: '0 1 * * *' # 8 AM (UTC+7)
   workflow_dispatch:
 jobs:
   fetch-today-data:
