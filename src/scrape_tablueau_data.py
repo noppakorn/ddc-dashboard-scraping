@@ -18,6 +18,6 @@ def scrape_tablueau(ts: TS, url: str, out_path: str) -> None:
 if __name__ == '__main__':
     date = str(datetime.datetime.now().date())
     date = "2021-08-03"
-    out_path = f"../tablueau_dump/{date}"
+    out_path = f"../wiki/tablueau_dump/{date}"
     url = "https://public.tableau.com/views/SATCOVIDDashboard/1-dash-tiles-w"
     scrape_tablueau(TS(), url, out_path)

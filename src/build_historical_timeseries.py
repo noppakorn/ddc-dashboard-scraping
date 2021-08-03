@@ -21,7 +21,7 @@ if __name__ == '__main__':
         curr_data.update(get_date_data(date, key_mapping))
         out.append(curr_data)
 
-    out_path = "../dataset/"
+    out_path = "../wiki/dataset/"
     os.makedirs(out_path, exist_ok=True)
     with open(os.path.join(out_path, "national-timeseries.json"), "w+", encoding="utf-8") as fout:
         json.dump(out, fout, ensure_ascii=False, indent=2)

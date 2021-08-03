@@ -30,8 +30,6 @@ jobs:
       - name: Upload json to wiki
         uses: kai-tub/external-repo-sync-action@v1
         with:
-          source-directory: |
-            "*/dataset/national-timeseries"
-            "*/tableau_dump"
+          source-directory: "./wiki"
         env:
           GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}

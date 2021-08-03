@@ -18,5 +18,5 @@ if __name__ == "__main__":
         date = date.split("/")
         date = f"{date[2]}-{date[0]}-{date[1]}"
         print("Processing:", date)
-        out_path = f"../tablueau_dump/{date}"
+        out_path = f"../wiki/tablueau_dump/{date}"
         scrape_tablueau(ts, url, out_path)
