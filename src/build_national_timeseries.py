@@ -9,7 +9,7 @@ from util import json_load
 def get_date_data(date: str, key_mapping: dict) -> dict:
     date_data = {}
     for table, new_name in key_mapping.items():
-        path = f"../tablueau_dump/{date}/{table}.json"
+        path = f"../wiki/tablueau_dump/{date}/{table}.json"
         curr_value = tuple(json_load(path)[0].values())[0]
         if curr_value == "%null%":
             curr_value = None
