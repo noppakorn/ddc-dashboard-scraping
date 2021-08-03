@@ -1,6 +1,7 @@
 import json
-import datetime
+import os
 import pandas as pd
+import datetime
 import requests
 from util import json_load
 
@@ -33,5 +34,7 @@ if __name__ == '__main__':
     today_data = {"date": date}
     today_data.update(get_date_data(date, key_mapping))
     json_data.append(today_data)
-    with open("../dataset/national-timeseries.json", "w+") as fout:
+    out_path = "../dataset/"
+    os.makedirs(out_path, exist_ok=True)
+    with open(os.path.join(out_path, "national-timeseries.json"), "w+") as fout:
         json.dump(json_data, fout, ensure_ascii=False, indent=2)

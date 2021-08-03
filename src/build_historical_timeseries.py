@@ -1,4 +1,5 @@
 import json
+import os
 import pandas as pd
 from build_national_timeseries import get_date_data
 
@@ -20,5 +21,7 @@ if __name__ == '__main__':
         curr_data.update(get_date_data(date, key_mapping))
         out.append(curr_data)
 
-    with open("../dataset/national-timeseries.json", "w+", encoding="utf-8") as fout:
+    out_path = "../dataset/"
+    os.makedirs(out_path, exist_ok=True)
+    with open(os.path.join(out_path, "national-timeseries.json"), "w+", encoding="utf-8") as fout:
         json.dump(out, fout, ensure_ascii=False, indent=2)
