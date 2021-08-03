@@ -4,6 +4,7 @@ import os
 import time
 import json
 import pandas as pd
+import sys
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")
@@ -32,8 +33,7 @@ if __name__ == '__main__':
     wd = webdriver.Chrome("chromedriver", options=chrome_options)
     wd.get("https://ddc.moph.go.th/covid19-dashboard/")
     time.sleep(5)
-    start = "2020-04-01"
-    end = "2020-04-30"
+    start, end = sys.argv[1], sys.argv[2]
     share_link_dict = {}
     for dto in pd.date_range(start, end):
         date_to_scrape = f"{str(dto.month).zfill(2)}/{str(dto.day).zfill(2)}/{dto.year}"
@@ -43,5 +43,5 @@ if __name__ == '__main__':
     wd.close()
     out_path = "../json"
     os.makedirs(out_path, exist_ok=True)
-    with open(os.path.join(out_path, "covid-dashboard-link-jan-2021.json"), "w+", encoding="utf-8") as fout:
+    with open(os.path.join(out_path, f"covid-dashboard-link-{start}-{end}.json"), "w+", encoding="utf-8") as fout:
         json.dump(share_link_dict, fout, ensure_ascii=False, indent=2)
