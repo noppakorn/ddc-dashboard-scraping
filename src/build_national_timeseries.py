@@ -26,10 +26,12 @@ if __name__ == '__main__':
         "D_ATKACM": "cumulative_atk_cases",
     }
     date = str(datetime.datetime.now().date())
-    with open("../dataset/national-timeseries.json", "r+", encoding="utf-8") as file:
-        json_data = json.load(file)
-        today_data = {"date": date}
-        today_data.update(get_date_data(date, key_mapping))
-        json_data.append(today_data)
-        file.seek(0)
-        json.dump(json_data, file, ensure_ascii=False, indent=2)
+    date = "2021-08-03"
+    prev_data = "https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping/dataset/national-timeseries.json"
+    req = requests.get(prev_data)
+    json_data = req.json()
+    today_data = {"date": date}
+    today_data.update(get_date_data(date, key_mapping))
+    json_data.append(today_data)
+    with open("../dataset/national-timeseries.json", "w+") as fout:
+        json.dump(json_data, fout, ensure_ascii=False, indent=2)
