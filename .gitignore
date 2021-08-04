@@ -133,5 +133,4 @@ dmypy.json
 .vscode
 
 # Data for wiki
-tablueau_dump
-dataset
+wiki
