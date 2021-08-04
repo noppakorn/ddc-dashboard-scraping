@@ -16,7 +16,7 @@ def get_date_data(date: str, key_mapping: dict) -> dict:
                 lab_avg, lab_date = None, None
             else:
                 lab_avg, lab_date = dashboard_data[table][0].values()
-            if lab_avg == "%null%" or lab_avg == None or lab_date == "%null%" or lab_date == None:
+            if lab_avg == "%null%" or lab_avg is None or lab_date == "%null%" or lab_date is None:
                 lab_avg, lab_date = None, None
             else:
                 lab_avg = round(float(lab_avg.replace(",", "")))

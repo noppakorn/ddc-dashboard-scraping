@@ -2,14 +2,14 @@ import glob
 import os
 from tableauscraper import TableauScraper as TS
 from util import json_load
-from scrape_tablueau_data import scrape_tablueau
+from scrape_tablueau_data import scrape_tableau
 from multiprocessing.pool import ThreadPool
 
 
 def scrape_wrapper(parameters: tuple):
     print("Processing:", parameters[1])
     ts = TS()
-    scrape_tablueau(ts, url=parameters[0], out_path=out_path, date=parameters[1])
+    scrape_tableau(ts, url=parameters[0], out_path=out_path, date=parameters[1])
 
 
 if __name__ == "__main__":
