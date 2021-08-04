@@ -30,6 +30,7 @@ if __name__ == '__main__':
         "D_PrisonACM": "cumulative_prison_cases",
         "D_Recov": "new_recovered",
         "D_RecovACM": "cumulative_recovered",
+        "D_Lab": "testing_data",
     }
     timeframe = [str(date.date()) for date in pd.date_range("2021-01-01", "2021-08-03")]
     timeseries = []
@@ -44,7 +45,7 @@ if __name__ == '__main__':
     with open(os.path.join(out_path, "national-timeseries.json"), "w+", encoding="utf-8") as json_file:
         json.dump(timeseries, json_file, ensure_ascii=False, indent=2)
 
-    fieldnames = ["date"] + list(key_mapping.values())
+    fieldnames = ["date"] + list(key_mapping.values()) + ["average_test", "average_test_update_date"]
     with open(os.path.join(out_path, "national-timeseries.csv"), "w+", encoding="utf-8") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()

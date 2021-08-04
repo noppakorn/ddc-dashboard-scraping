@@ -10,11 +10,23 @@ def get_date_data(date: str, key_mapping: dict) -> dict:
     dashboard_data = json_load(f"../wiki/tableau_dump/{date}.json")
     date_data = {}
     for table, new_name in key_mapping.items():
-        curr_value = tuple(dashboard_data[table][0].values())[0]
-        if curr_value == "%null%":
-            curr_value = None
-        date_data[new_name] = curr_value
+        # For testing data the table have separate update date
+        if table == "D_Lab":
+            lab_avg, lab_date = dashboard_data[table][0].values()
+            if lab_avg == "%null%" or lab_date == "%null%":
+                lab_avg, lab_date = None, None
+            else:
+                lab_avg = round(float(lab_avg.replace(",", "")))
+                lab_date = str(datetime.datetime.strptime(lab_date, "%m/%d/%Y").date())
+            date_data["average_test"] = lab_avg
+            date_data["average_test_update_date"] = lab_date
+        else:
+            curr_value = tuple(dashboard_data[table][0].values())[0]
+            if curr_value == "%null%":
+                curr_value = None
+            date_data[new_name] = curr_value
     return date_data
+
 
 if __name__ == '__main__':
     key_mapping = {
@@ -41,6 +53,7 @@ if __name__ == '__main__':
         "D_PrisonACM": "cumulative_prison_cases",
         "D_Recov": "new_recovered",
         "D_RecovACM": "cumulative_recovered",
+        "D_Lab": "testing_data",
     }
     date = str(datetime.datetime.now().date())
 
@@ -57,7 +70,7 @@ if __name__ == '__main__':
     with open(os.path.join(out_path, "national-timeseries.json"), "w+") as fout:
         json.dump(json_data, fout, ensure_ascii=False, indent=2)
 
-    fieldnames = ["date"] + list(key_mapping.values())
+    fieldnames = ["date"] + list(key_mapping.values()) + ["average_test", "average_test_update_date"]
     with open(os.path.join(out_path, "national-timeseries.csv"), "w+", encoding="utf-8") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
