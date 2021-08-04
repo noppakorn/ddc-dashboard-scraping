@@ -32,7 +32,7 @@ if __name__ == '__main__':
         "D_RecovACM": "cumulative_recovered",
         "D_Lab": "testing_data",
     }
-    timeframe = [str(date.date()) for date in pd.date_range("2021-01-01", "2021-08-03")]
+    timeframe = [str(date.date()) for date in pd.date_range("2020-01-12", "2021-08-04")]
     timeseries = []
     for date in timeframe:
         curr_data = {"date": date}

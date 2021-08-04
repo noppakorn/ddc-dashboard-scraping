@@ -12,8 +12,11 @@ def get_date_data(date: str, key_mapping: dict) -> dict:
     for table, new_name in key_mapping.items():
         # For testing data the table have separate update date
         if table == "D_Lab":
-            lab_avg, lab_date = dashboard_data[table][0].values()
-            if lab_avg == "%null%" or lab_date == "%null%":
+            if len(dashboard_data[table]) < 1:
+                lab_avg, lab_date = None, None
+            else:
+                lab_avg, lab_date = dashboard_data[table][0].values()
+            if lab_avg == "%null%" or lab_avg == None or lab_date == "%null%" or lab_date == None:
                 lab_avg, lab_date = None, None
             else:
                 lab_avg = round(float(lab_avg.replace(",", "")))
@@ -21,7 +24,10 @@ def get_date_data(date: str, key_mapping: dict) -> dict:
             date_data["average_test"] = lab_avg
             date_data["average_test_update_date"] = lab_date
         else:
-            curr_value = tuple(dashboard_data[table][0].values())[0]
+            if len(dashboard_data[table]) < 1:
+                curr_value = None
+            else:
+                curr_value = tuple(dashboard_data[table][0].values())[0]
             if curr_value == "%null%":
                 curr_value = None
             date_data[new_name] = curr_value
