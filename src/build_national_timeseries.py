@@ -70,7 +70,12 @@ if __name__ == '__main__':
     prev_json = "https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping/dataset/national-timeseries.json"
     req = requests.get(prev_json)
     json_data = req.json()
-    json_data.append(today_data)
+    if json_data[-1]["date"] == date :
+        print("Data for:", date, "already exist in json, replacing.")
+        json_data[-1] = today_data
+    else :
+        json_data.append(today_data)
+
     out_path = "../wiki/dataset/"
     os.makedirs(out_path, exist_ok=True)
     with open(os.path.join(out_path, "national-timeseries.json"), "w+") as fout:
