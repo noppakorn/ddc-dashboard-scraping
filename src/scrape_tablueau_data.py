@@ -3,13 +3,11 @@ import time
 import json
 import os
 from tableauscraper import TableauScraper as TS
-from util import df_to_json
 
 def scrape_tablueau(ts: TS, url: str, out_path: str, date: str) -> None:
     start = time.time()
     ts.loads(url)
     workbook = ts.getWorkbook()
-    os.makedirs(out_path, exist_ok=True)
     l = {}
     for t in workbook.worksheets:
         l[t.name] = t.data.to_dict(orient="records")
@@ -19,6 +17,7 @@ def scrape_tablueau(ts: TS, url: str, out_path: str, date: str) -> None:
 
 if __name__ == '__main__':
     date = str(datetime.datetime.now().date())
-    out_path = f"../wiki/tableau_dump"
+    out_path = "../wiki/tableau_dump"
+    os.makedirs(out_path, exist_ok=True)
     url = "https://public.tableau.com/views/SATCOVIDDashboard/1-dash-tiles-w"
     scrape_tablueau(TS(), url, out_path, date)
