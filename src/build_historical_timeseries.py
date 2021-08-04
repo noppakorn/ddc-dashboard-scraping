@@ -13,6 +13,10 @@ if __name__ == '__main__':
         "D_Medic": "hospitalized",
         "D_ATK": "new_atk_cases",
         "D_ATKACM": "cumulative_atk_cases",
+        "D_Severe": "severe_cases",
+        "D_SevereTube": "severe_cases_tube",
+        "D_Walkin": "new_walkin_cases",
+        "D_WalkinACM": "cumulative_walkin_cases",
     }
     timeframe = [str(date.date()) for date in pd.date_range("2021-01-01", "2021-08-02")]
     out = []

@@ -1,7 +1,5 @@
 import glob
-import os
 from tableauscraper import TableauScraper as TS
-import time
 from util import json_load, df_to_json
 from scrape_tablueau_data import scrape_tablueau
 
@@ -18,5 +16,5 @@ if __name__ == "__main__":
         date = date.split("/")
         date = f"{date[2]}-{date[0]}-{date[1]}"
         print("Processing:", date)
-        out_path = f"../wiki/tablueau_dump/{date}"
+        out_path = f"../wiki/tableau_dump/{date}"
         scrape_tablueau(ts, url, out_path)
