@@ -25,7 +25,7 @@ jobs:
       - name: Fetch Dashboard Data
         working-directory: ./src
         run: |
-          python scrape_tablueau_data.py
+          python scrape_tableau_data.py
       - name: Build National Timeseries
         working-directory: ./src
         run: |
