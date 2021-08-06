@@ -1,6 +1,9 @@
 # Scraping COVID-19 data from DDC Dashboard
-Scraping Thailand COVID-19 data from the DDC's tableau dashboard.\
+Scraping Thailand COVID-19 data from the DDC's tableau dashboard.
+
 ![fetch-today-data](https://github.com/noppakorn/ddc-dashboard-scraping/actions/workflows/fetch-today-data.yml/badge.svg)
+
+Data is updated at `07:30` and `08:00` daily.
 ## About
 Thailand COVID-19 data is not avalible in raw form from the government. The dashboard make the situation a bit better, but still it's not good enough.
 ## Getting the Data
