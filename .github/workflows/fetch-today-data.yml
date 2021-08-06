@@ -15,11 +15,11 @@ jobs:
         uses: szenius/set-timezone@v1.0
         with:
           timezoneLinux: 'Asia/Bangkok'
-      - name : Cache pip
+      - name: Cache Python Environment
         uses: actions/cache@v2
         with:
-          path: ~/.cache/pip
-          key: ${{ hashFiles('requirements.txt') }}
+          path: ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('requirements.txt') }}
       - name: Setup Python Requirements
         run : pip install -r requirements.txt
       - name: Fetch Dashboard Data
