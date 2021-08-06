@@ -28,4 +28,5 @@ jobs:
           python build_national_timeseries.py
       - name: Show scraped data
         run: |
-          cat .wiki/dataset/national-timeseries.csv
+          ls -R
+          cat wiki/dataset/national-timeseries.csv
