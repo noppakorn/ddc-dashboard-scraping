@@ -10,5 +10,7 @@ Thailand COVID-19 data is not avalible in raw form from the government. The dash
 - National Timeseries : [CSV](https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping/dataset/national-timeseries.csv), [JSON](https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping/dataset/national-timeseries.json)
 - Data dates back to `2021-01-01`
 - Raw data can be downloaded by cloning this repo wiki.
+## Data Visualisation
+- See [The Researcher](https://covid-19.researcherth.co)
 ## Data Source
 - [DDC COVID-19 Dashboard](https://ddc.moph.go.th/covid19-dashboard/)
