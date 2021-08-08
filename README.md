@@ -1,5 +1,6 @@
 # Scraping COVID-19 data from DDC Dashboard
 ![fetch-today-data](https://github.com/noppakorn/ddc-dashboard-scraping/actions/workflows/fetch-today-data.yml/badge.svg)
+
 Making Thailand COVID-19 data avalible in an easily processible form!\
 Data is updated at `07:30` and `08:00` daily.
 ## About
