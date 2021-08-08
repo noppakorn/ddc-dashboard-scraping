@@ -19,7 +19,10 @@ def get_date_data(date: str, key_mapping: dict) -> dict:
             if lab_avg == "%null%" or lab_avg is None or lab_date == "%null%" or lab_date is None:
                 lab_avg, lab_date = None, None
             else:
-                lab_avg = round(float(lab_avg.replace(",", "")))
+                #lab_avg = round(float(lab_avg.replace(",", "")))
+                print(lab_avg)
+                print(type(lab_avg))
+                lab_avg = round(float(lab_avg))
                 lab_date = str(datetime.datetime.strptime(lab_date, "%m/%d/%Y").date())
             date_data["average_test"] = lab_avg
             date_data["average_test_update_date"] = lab_date
