@@ -15,12 +15,13 @@ def get_date_data(date: str, key_mapping: dict) -> dict:
             if len(dashboard_data[table]) < 1:
                 lab_avg, lab_date = None, None
             else:
-                lab_avg, lab_date = dashboard_data[table][0].values()
+                #lab_avg, lab_date = dashboard_data[table][0].values()
+                lab_avg = dashboard_data[table][0]["AGG(% ติดเฉลี่ย)-alias"]
+                lab_date = dashboard_data[table][0]["ATTR(txn_date)-alias"]
             if lab_avg == "%null%" or lab_avg is None or lab_date == "%null%" or lab_date is None:
                 lab_avg, lab_date = None, None
             else:
-                #lab_avg = round(float()
-                lab_avg = round(float(str(lab_avg).replace(",", "")))
+                lab_avg = float(str(lab_avg).replace(",", ""))
                 lab_date = str(datetime.datetime.strptime(lab_date, "%m/%d/%Y").date())
             date_data["average_test"] = lab_avg
             date_data["average_test_update_date"] = lab_date
