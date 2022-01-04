@@ -2,7 +2,7 @@ import glob
 import os
 from tableauscraper import TableauScraper as TS
 from util import json_load
-from scrape_tablueau_data import scrape_tableau
+from scrape_tableau_data import scrape_tableau
 from multiprocessing.pool import ThreadPool
 
 
@@ -15,7 +15,7 @@ def scrape_wrapper(parameters: tuple):
 if __name__ == "__main__":
 
     url_dict = {}
-    for i in glob.glob("../dashboard_links/covid-dashboard-link-2021-*.json"):
+    for i in glob.glob("../dashboard_links/covid-dashboard-link-2021-12-29-2022-01-03.json"):
         url_dict.update(json_load(i))
 
     out_path = "../wiki/tableau_dump"

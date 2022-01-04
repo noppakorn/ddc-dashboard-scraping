@@ -15,9 +15,11 @@ def get_date_data(date: str, key_mapping: dict) -> dict:
             if len(dashboard_data[table]) < 1:
                 lab_avg, lab_date = None, None
             else:
-                #lab_avg, lab_date = dashboard_data[table][0].values()
-                lab_avg = dashboard_data[table][0]["AGG(% ติดเฉลี่ย)-alias"]
-                lab_date = dashboard_data[table][0]["ATTR(txn_date)-alias"]
+                try:
+                    lab_avg = dashboard_data[table][0]["AGG(% ติดเฉลี่ย)-alias"]
+                    lab_date = dashboard_data[table][0]["ATTR(txn_date)-alias"]
+                except KeyError:
+                    lab_avg, lab_date = dashboard_data[table][0].values()
             if lab_avg == "%null%" or lab_avg is None or lab_date == "%null%" or lab_date is None:
                 lab_avg, lab_date = None, None
             else:
