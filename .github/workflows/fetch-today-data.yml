@@ -37,7 +37,7 @@ jobs:
         run: |
           python build_national_timeseries.py
       - name: Upload json to wiki
-        uses: kai-tub/external-repo-sync-action@v1
+        uses: noppakorn/external-repo-sync-action@v1
         with:
           source-directory: "./wiki"
         env:
