@@ -15,7 +15,7 @@ def scrape_wrapper(parameters: tuple):
 if __name__ == "__main__":
 
     url_dict = {}
-    for i in glob.glob("../dashboard_links/covid-dashboard-link-2021-12-29-2022-01-03.json"):
+    for i in glob.glob("../dashboard_links/covid-dashboard-link-2022-04-13-2022-04-16.json"):
         url_dict.update(json_load(i))
 
     out_path = "../wiki/tableau_dump"
