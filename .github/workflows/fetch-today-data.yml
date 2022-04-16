@@ -32,6 +32,8 @@ jobs:
           python scrape_tableau_data.py
       - name: Build National Timeseries
         working-directory: ./src
+        env:
+          PRODUCTION: 1
         run: |
           python build_national_timeseries.py
       - name: Upload json to wiki
