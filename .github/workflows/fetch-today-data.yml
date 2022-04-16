@@ -28,6 +28,8 @@ jobs:
         run : pip install -r requirements.txt
       - name: Fetch Dashboard Data
         working-directory: ./src
+        env:
+          PRODUCTION: 1
         run: |
           python scrape_tableau_data.py
       - name: Build National Timeseries
